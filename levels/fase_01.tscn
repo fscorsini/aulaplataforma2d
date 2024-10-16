@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://da3u410187phv"]
+
+[ext_resource type="Texture2D" uid="uid://bni4nsnnrkkag" path="res://assets/Sprite Pack 8/4 - Percy/Idle (32 x 32).png" id="1_8uyjd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckfxr"]
+atlas = ExtResource("1_8uyjd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djgnx"]
+atlas = ExtResource("1_8uyjd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyexo"]
+atlas = ExtResource("1_8uyjd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ydg3"]
+atlas = ExtResource("1_8uyjd")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vvs7"]
+atlas = ExtResource("1_8uyjd")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp7qx"]
+atlas = ExtResource("1_8uyjd")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wo3r"]
+atlas = ExtResource("1_8uyjd")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpgdg"]
+atlas = ExtResource("1_8uyjd")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6jt6"]
+atlas = ExtResource("1_8uyjd")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6qfgp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckfxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djgnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyexo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ydg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vvs7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp7qx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wo3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpgdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6jt6")
+}],
+"loop": true,
+"name": &"parado",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2i86"]
+size = Vector2(12, 20)
+
+[node name="Fase01" type="Node2D"]
+
+[node name="Jogador" type="CharacterBody2D" parent="."]
+position = Vector2(85, 51)
+metadata/_edit_group_ = true
+
+[node name="animacao" type="AnimatedSprite2D" parent="Jogador"]
+sprite_frames = SubResource("SpriteFrames_6qfgp")
+animation = &"parado"
+autoplay = "parado"
+
+[node name="Colisao" type="CollisionShape2D" parent="Jogador"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_k2i86")
