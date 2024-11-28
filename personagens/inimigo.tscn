@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://i1xwkqapfabe"]
+
+[ext_resource type="Script" path="res://scripts/inimigo.gd" id="1_ph5lv"]
+[ext_resource type="Texture2D" uid="uid://dw8bq62ep7674" path="res://assets/Sprite Pack 8/6 - Angie/Running (32 x 32).png" id="1_ye2ax"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8brb"]
+atlas = ExtResource("1_ye2ax")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndhs8"]
+atlas = ExtResource("1_ye2ax")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqx24"]
+atlas = ExtResource("1_ye2ax")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wuqb"]
+atlas = ExtResource("1_ye2ax")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bscff"]
+atlas = ExtResource("1_ye2ax")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlwtc"]
+atlas = ExtResource("1_ye2ax")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_skrrf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8brb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndhs8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqx24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wuqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bscff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlwtc")
+}],
+"loop": true,
+"name": &"andando",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ueno"]
+radius = 5.0
+height = 14.0
+
+[node name="inimigo" type="CharacterBody2D"]
+script = ExtResource("1_ph5lv")
+metadata/_edit_group_ = true
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_skrrf")
+animation = &"andando"
+autoplay = "andando"
+frame_progress = 0.683395
+
+[node name="colisao" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("CapsuleShape2D_8ueno")
+
+[node name="bate_volta" type="RayCast2D" parent="."]
+position = Vector2(1, 9)
+target_position = Vector2(7, 0)

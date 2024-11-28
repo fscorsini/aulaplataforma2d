@@ -1,7 +1,33 @@
-[gd_scene load_steps=14 format=3 uid="uid://cpk6gw8q8t4"]
+[gd_scene load_steps=22 format=3 uid="uid://cpk6gw8q8t4"]
 
 [ext_resource type="Script" path="res://scripts/jogador.gd" id="1_bo3xj"]
+[ext_resource type="Texture2D" uid="uid://gxuxxa8ev3uo" path="res://assets/Sprite Pack 8/4 - Percy/Running (32 x 32).png" id="2_aprk0"]
 [ext_resource type="Texture2D" uid="uid://bni4nsnnrkkag" path="res://assets/Sprite Pack 8/4 - Percy/Idle (32 x 32).png" id="2_b0b4o"]
+[ext_resource type="Texture2D" uid="uid://deycjuog6r030" path="res://assets/Sprite Pack 8/4 - Percy/Jump (32 x 32).png" id="4_mlma1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnkel"]
+atlas = ExtResource("2_aprk0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ndk3"]
+atlas = ExtResource("2_aprk0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpem4"]
+atlas = ExtResource("2_aprk0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38h5h"]
+atlas = ExtResource("2_aprk0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gond8"]
+atlas = ExtResource("2_aprk0")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fiu41"]
+atlas = ExtResource("2_aprk0")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ckfxr"]
 atlas = ExtResource("2_b0b4o")
@@ -43,6 +69,29 @@ region = Rect2(256, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_vnkel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ndk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpem4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38h5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gond8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fiu41")
+}],
+"loop": true,
+"name": &"correndo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ckfxr")
 }, {
 "duration": 1.0,
@@ -72,6 +121,14 @@ animations = [{
 "loop": true,
 "name": &"parado",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_mlma1")
+}],
+"loop": true,
+"name": &"pulando",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k2i86"]
@@ -84,7 +141,7 @@ metadata/_edit_group_ = true
 
 [node name="animacao" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6qfgp")
-animation = &"parado"
+animation = &"correndo"
 autoplay = "parado"
 
 [node name="Colisao" type="CollisionShape2D" parent="."]
