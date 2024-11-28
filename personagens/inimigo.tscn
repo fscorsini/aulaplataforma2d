@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://i1xwkqapfabe"]
+[gd_scene load_steps=13 format=3 uid="uid://i1xwkqapfabe"]
 
 [ext_resource type="Script" path="res://scripts/inimigo.gd" id="1_ph5lv"]
 [ext_resource type="Texture2D" uid="uid://dw8bq62ep7674" path="res://assets/Sprite Pack 8/6 - Angie/Running (32 x 32).png" id="1_ye2ax"]
+[ext_resource type="PackedScene" uid="uid://cecfyi6ds45so" path="res://personagens/dano_inimigo.tscn" id="3_a8go5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p8brb"]
 atlas = ExtResource("1_ye2ax")
@@ -55,22 +56,30 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ueno"]
 radius = 5.0
-height = 14.0
+height = 18.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqhvs"]
+size = Vector2(4, 1)
 
 [node name="inimigo" type="CharacterBody2D"]
 script = ExtResource("1_ph5lv")
-metadata/_edit_group_ = true
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_skrrf")
 animation = &"andando"
 autoplay = "andando"
-frame_progress = 0.683395
+frame_progress = 0.662767
 
 [node name="colisao" type="CollisionShape2D" parent="."]
-position = Vector2(0, 9)
+position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_8ueno")
 
 [node name="bate_volta" type="RayCast2D" parent="."]
 position = Vector2(1, 9)
 target_position = Vector2(7, 0)
+
+[node name="dano_inimigo" parent="." instance=ExtResource("3_a8go5")]
+
+[node name="colisao_dano" type="CollisionShape2D" parent="dano_inimigo"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_fqhvs")
