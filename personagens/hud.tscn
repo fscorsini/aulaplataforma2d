@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3ydvvdkdqakn"]
+
+[ext_resource type="Script" path="res://scripts/control.gd" id="1_c0wap"]
+[ext_resource type="Texture2D" uid="uid://dudh8d0sfmgkv" path="res://assets/Mini FX, Items & UI/Mini FX, Items & UI/Common Pick-ups/Coin (16 x 16).png" id="1_gjan6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8xme"]
+atlas = ExtResource("1_gjan6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vwg2"]
+atlas = ExtResource("1_gjan6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yairr"]
+atlas = ExtResource("1_gjan6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7kbv"]
+atlas = ExtResource("1_gjan6")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2e45f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8xme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vwg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yairr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7kbv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c0wap")
+
+[node name="container" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="moedas_container" type="HBoxContainer" parent="Control/container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="anim" type="AnimatedSprite2D" parent="Control/container/moedas_container"]
+position = Vector2(-9, 11)
+sprite_frames = SubResource("SpriteFrames_2e45f")
+autoplay = "default"
+
+[node name="contador" type="Label" parent="Control/container/moedas_container"]
+layout_mode = 2
+text = "0000"
