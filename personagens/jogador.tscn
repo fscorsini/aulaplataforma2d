@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cpk6gw8q8t4"]
+[gd_scene load_steps=23 format=3 uid="uid://cpk6gw8q8t4"]
 
 [ext_resource type="Script" path="res://scripts/jogador.gd" id="1_bo3xj"]
 [ext_resource type="Texture2D" uid="uid://gxuxxa8ev3uo" path="res://assets/Sprite Pack 8/4 - Percy/Running (32 x 32).png" id="2_aprk0"]
@@ -134,10 +134,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k2i86"]
 size = Vector2(12, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mh80l"]
+size = Vector2(20, 13)
+
 [node name="Jogador" type="CharacterBody2D"]
 position = Vector2(85, 51)
 script = ExtResource("1_bo3xj")
-metadata/_edit_group_ = true
 
 [node name="animacao" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6qfgp")
@@ -148,5 +150,13 @@ autoplay = "parado"
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_k2i86")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = -10
+[node name="dano_jogador" type="Area2D" parent="."]
+
+[node name="colisao_dano" type="CollisionShape2D" parent="dano_jogador"]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_mh80l")
+debug_color = Color(0.942012, 0.198219, 0.357549, 0.42)
+
+[node name="remote" type="RemoteTransform2D" parent="."]
+
+[connection signal="body_entered" from="dano_jogador" to="." method="_on_dano_jogador_body_entered"]

@@ -61,7 +61,7 @@ height = 18.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqhvs"]
 size = Vector2(4, 1)
 
-[node name="inimigo" type="CharacterBody2D"]
+[node name="inimigo" type="CharacterBody2D" groups=["inimigos"]]
 script = ExtResource("1_ph5lv")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]

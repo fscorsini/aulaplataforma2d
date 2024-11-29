@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://c2sa3f52c8b0p"]
+[gd_scene load_steps=10 format=4 uid="uid://c2sa3f52c8b0p"]
 
+[ext_resource type="Script" path="res://levels/fase_02.gd" id="1_a7n0o"]
 [ext_resource type="PackedScene" uid="uid://c3ydvvdkdqakn" path="res://personagens/hud.tscn" id="1_poxwi"]
 [ext_resource type="Texture2D" uid="uid://b8chmwdebsggm" path="res://assets/Seasonal Tilesets/4 - Winter World/Terrain (16 x 16).png" id="1_rse7j"]
 [ext_resource type="PackedScene" uid="uid://cpk6gw8q8t4" path="res://personagens/jogador.tscn" id="2_64kls"]
@@ -88,6 +89,10 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_86pqg")
 
 [node name="Fase02" type="Node2D"]
+script = ExtResource("1_a7n0o")
+
+[node name="camera" type="Camera2D" parent="."]
+limit_left = -10
 
 [node name="HUD" parent="." instance=ExtResource("1_poxwi")]
 
@@ -131,3 +136,9 @@ position = Vector2(1031, 195)
 
 [node name="portal" parent="." instance=ExtResource("6_mt4vp")]
 position = Vector2(1288, 152)
+
+[node name="reiniciar_jogo" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="reiniciar_jogo" to="." method="_on_reiniciar_jogo_timeout"]

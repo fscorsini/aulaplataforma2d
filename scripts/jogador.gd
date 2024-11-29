@@ -5,6 +5,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @onready var anim = $animacao as AnimatedSprite2D
 var pulando := false
+@onready var remote = $remote as RemoteTransform2D
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -41,3 +42,13 @@ func _physics_process(delta: float) -> void:
 		position.y = -10
 		
 	move_and_slide()
+
+
+func _on_dano_jogador_body_entered(body: Node2D) -> void:
+	if body.is_in_group("inimigos"):
+		queue_free()
+		get_tree().current_scene.reiniciar_fase()
+
+func seguir_camera(camera):
+	var caminho_camera = camera.get_path()
+	remote.remote_path = caminho_camera
