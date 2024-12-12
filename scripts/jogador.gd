@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 		if !pulando:
 			anim.play("parado")
 		else:
-			anim.play("correndo")
+			anim.play("pulando")
 	if position.y > 700:
 		position.y = -10
 		
