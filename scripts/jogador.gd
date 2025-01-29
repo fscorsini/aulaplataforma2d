@@ -1,13 +1,22 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 @onready var anim = $animacao as AnimatedSprite2D
 var pulando := false
 @onready var remote = $remote as RemoteTransform2D
+#animações
+var aniparado = ""
+var anipulando = ""
+var anicorrendo = ""
 
 func _physics_process(delta: float) -> void:
+	if 1 == 1:
+		aniparado = "parado"
+		anipulando = "pulando"
+		anicorrendo = "correndo"
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -29,15 +38,15 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 		anim.scale.x = direction
 		if !pulando:
-			anim.play("correndo")
+			anim.play(anicorrendo)
 		elif pulando:
-			anim.play("pulando")
+			anim.play(anipulando)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if !pulando:
-			anim.play("parado")
+			anim.play(aniparado)
 		else:
-			anim.play("pulando")
+			anim.play(anipulando)
 	if position.y > 700:
 		position.y = -10
 		
